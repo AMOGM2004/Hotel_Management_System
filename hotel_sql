@@ -1,0 +1,219 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 18, 2024 at 02:04 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `hotel`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE `menu_items` (
+  `id` int(11) NOT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `category`, `name`, `price`) VALUES
+(1, 'Breakfast', 'Idly', 30.00),
+(2, 'Breakfast', 'Vada', 25.00),
+(3, 'Lunch', 'Vegetable Biryani', 60.00),
+(4, 'Lunch', 'Ricebath', 50.00),
+(5, 'Dinner', 'Roti & Curry', 60.00),
+(6, 'Dinner', 'Veg Thali', 130.00),
+(7, 'Beverages', 'Coffee', 40.00),
+(8, 'Beverages', 'Tea', 30.00),
+(9, 'Breakfast', 'Masala Dosa', 70.00),
+(10, 'Breakfast', 'Pongal', 50.00),
+(11, 'Lunch', 'Poliogare', 40.00),
+(12, 'Lunch', 'Rice', 50.00),
+(13, 'Dinner', 'Mushrrom Palvo', 80.00),
+(14, 'Dinner', 'North-Indian Thali', 130.00),
+(15, 'Beverages', 'StrawBerry Juice', 75.00),
+(16, 'Beverages', 'Orange Juice', 50.00),
+(17, 'Breakfast', 'Upma', 40.00),
+(18, 'Breakfast', 'Bisibelebath', 60.00),
+(19, 'Lunch', 'Poori & Sagu', 65.00),
+(20, 'Lunch', 'Rice & Sambar', 50.00),
+(21, 'Dinner', 'Pasta', 120.00),
+(22, 'Dinner', 'Veg Fried Rice', 70.00),
+(23, 'Beverages', 'Lassi', 40.00),
+(24, 'Beverages', 'ButterMilk', 20.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `waiter_id` int(11) NOT NULL,
+  `order_date` datetime DEFAULT current_timestamp(),
+  `total_amount` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `waiter_id`, `order_date`, `total_amount`) VALUES
+(1, 0, '2024-11-09 01:48:40', 40.00),
+(2, 0, '2024-11-09 01:50:37', 40.00),
+(3, 0, '2024-11-09 01:55:01', 270.00),
+(4, 0, '2024-11-09 09:35:37', 350.00),
+(5, 0, '2024-11-09 12:20:58', 60.00),
+(6, 0, '2024-11-09 12:25:49', 125.00),
+(7, 0, '2024-11-09 12:31:26', 40.00),
+(8, 0, '2024-11-09 13:08:51', 220.00),
+(9, 0, '2024-11-23 10:33:53', 160.00),
+(10, 0, '2024-11-23 10:57:02', 60.00),
+(11, 0, '2024-11-23 13:17:08', 60.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `item_name` varchar(100) NOT NULL,
+  `item_price` decimal(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `item_name`, `item_price`, `quantity`, `total`) VALUES
+(1, 2, 'Coffee', 40.00, 1, 40.00),
+(2, 3, 'Chicken Curry', 150.00, 1, 150.00),
+(3, 3, 'Ricebath', 50.00, 1, 50.00),
+(4, 3, 'Coffee', 40.00, 1, 40.00),
+(5, 3, 'Tea', 30.00, 1, 30.00),
+(6, 4, 'Idly', 50.00, 1, 50.00),
+(7, 4, 'Coffee', 40.00, 1, 40.00),
+(8, 4, 'Veg Thali', 130.00, 2, 260.00),
+(9, 5, 'Vegetable Biryani', 60.00, 1, 60.00),
+(10, 6, 'StrawBerry Juice', 75.00, 1, 75.00),
+(11, 6, 'Orange Juice', 50.00, 1, 50.00),
+(12, 7, 'Poliogare', 40.00, 1, 40.00),
+(13, 8, 'Roti & Curry', 60.00, 1, 60.00),
+(14, 8, 'Mushrrom Palvo', 80.00, 2, 160.00),
+(15, 9, 'Idly', 30.00, 1, 30.00),
+(16, 9, 'Masala Dosa', 70.00, 1, 70.00),
+(17, 9, 'Roti & Curry', 60.00, 1, 60.00),
+(18, 10, 'Roti & Curry', 60.00, 1, 60.00),
+(19, 11, 'Roti & Curry', 60.00, 1, 60.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `waiters`
+--
+
+CREATE TABLE `waiters` (
+  `waiter_id` varchar(50) NOT NULL,
+  `waiter_password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `waiters`
+--
+
+INSERT INTO `waiters` (`waiter_id`, `waiter_password`) VALUES
+('Ravi', 'wait123');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `waiters`
+--
+ALTER TABLE `waiters`
+  ADD PRIMARY KEY (`waiter_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
