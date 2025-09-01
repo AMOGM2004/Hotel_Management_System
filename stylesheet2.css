@@ -1,0 +1,311 @@
+/* General body styles */
+html, body {
+    height: 100%; /* Ensure the body and html elements occupy the full height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    color: #333;
+    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Container for the main content */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Set the max-width of the container */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header styles */
+h2 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+/* Table styles */
+table {
+    width: 60%; /* Make table take up 100% of the container width */
+    max-width: 70%; /* Prevent table from stretching beyond the container */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    pointer-events: auto; /* Ensure pointer events are active on the table */
+}
+
+/* Disable animation for table after initial render */
+table.no-animation {
+    animation: none; /* Disable animation when this class is applied */
+    transform: none; /* Disable transform when this class is applied */
+}
+
+/* Animating table rows initially (when page first loads) */
+table tr {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Animation for table rows */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for table rows */
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transform: none; /* Prevent hover scale effect */
+}
+
+/* Prevent hover or animation effect after table update (e.g., after adding to cart) */
+table.no-animation tr:hover {
+    background-color: inherit;
+    transform: none;
+}
+
+/* Prevent hover or animation effect on table rows after page load */
+table.no-animation tr {
+    animation: none;
+    transform: none;
+}
+
+/* Prevent animation for the entire table after page load */
+table.no-animation {
+    animation: none;
+    transform: none;
+}
+
+/* Additional table styles */
+th, td {
+    padding: 12px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+td {
+    font-size: 1em;
+    color: #555;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Prevent any overflow issues */
+table, th, td {
+    word-wrap: break-word; /* Prevent long words from overflowing */
+    table-layout: fixed; /* Prevent table from expanding beyond the container */
+}
+
+/* Form buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Cart container styles */
+#cart-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#cart-container h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#cart-container table {
+    margin-top: 20px;
+    width: 60%; /* Ensure table takes up the full width */
+}
+
+#cart-container td, #cart-container th {
+    text-align: left;
+    padding: 10px 15px;
+}
+
+#cart-container th {
+    text-align: center;
+}
+
+#cart-container .total {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+#cart-container .empty-cart {
+    color: #f44336;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Add to cart button inside table */
+form button {
+    padding: 8px 15px;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+form button:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+/* Back to Menu button */
+form.back-to-menu button {
+    background-color: #9E9E9E;
+    color: white;
+    margin-top: 20px;
+}
+
+form.back-to-menu button:hover {
+    background-color: #757575;
+}
+
+/* Confirm Order button */
+form.confirm-order button {
+    background-color: #FF5722;
+    color: white;
+    font-size: 1.1em;
+    padding: 12px 30px;
+    margin-top: 20px;
+}
+
+form.confirm-order button:hover {
+    background-color: #E64A19;
+}
+
+/* Category Container */
+.category-container {
+    display: flex;
+    justify-content: center; /* Center the images horizontally */
+    gap: 20px; /* Add space between the images */
+    flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+    margin-top: 30px;
+}
+
+/* Category Image Styles */
+.category-container a {
+    display: block;
+    width: 250px; /* Set a fixed width for the images */
+    height: 140px; /* Set a fixed height for the images */
+    overflow: hidden; /* Hide any overflow */
+    border-radius: 8px; /* Round the corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for the Images */
+.category-container a:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+/* Category Image (img) Specific Styles */
+.category-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images cover the container without distortion */
+    border-radius: 8px; /* Make the image corners round */
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect on Image */
+.category-container a:hover img {
+    transform: scale(1.1); /* Zoom in on image when hovered */
+}
+
+/* Add a smooth fade-in effect when images appear */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to each category item */
+.category-container a {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.one{
+    margin-top:60px;
+}
+
+/* Adjust layout for mobile */
+@media (max-width: 768px) {
+    .category-container {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images horizontally */
+        gap: 15px; /* Reduce space between images on smaller screens */
+    }
+}
+
+/* Prevent animation for the entire table and rows after page load */
+@media (max-width: 768px) {
+    table.no-animation {
+        animation: none;
+    }
+
+    table.no-animation tr {
+        animation: none;
+    }
+}
+

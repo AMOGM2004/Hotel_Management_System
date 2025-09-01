@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.category-container img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#cart-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[name="confirm_order"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+button[name="show_cart"], button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button[name="remove_from_cart"] {
+    background-color: #dc3545;
+    color: #fff;
+}
